@@ -1,0 +1,209 @@
+<style>
+  :root {
+    --bg: #F6F7FB;
+    --surface: #FFFFFF;
+    --surface-2: #F0F1F7;
+    --border: #E2E4EE;
+    --text: #14151C;
+    --muted: #5B5F70;
+    --brand: #6D5CF6;
+    --brand-strong: #5A48E0;
+    --brand-soft: rgba(109, 92, 246, 0.10);
+    --danger: #E23B4D;
+    --danger-soft: rgba(226, 59, 77, 0.10);
+    --gold: #E0A400;
+    --shadow: 0 1px 2px rgba(20,21,28,.04), 0 8px 30px rgba(20,21,28,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0C0D14;
+      --surface: #16171F;
+      --surface-2: #1E202A;
+      --border: #2A2C38;
+      --text: #F1F2F8;
+      --muted: #9CA1B4;
+      --brand: #8B7CFF;
+      --brand-strong: #7C6CFF;
+      --brand-soft: rgba(139, 124, 255, 0.14);
+      --danger: #FF5A6A;
+      --danger-soft: rgba(255, 90, 106, 0.14);
+      --gold: #FFC83D;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 34px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #F6F7FB; --surface: #FFFFFF; --surface-2: #F0F1F7; --border: #E2E4EE;
+    --text: #14151C; --muted: #5B5F70; --brand: #6D5CF6; --brand-strong: #5A48E0;
+    --brand-soft: rgba(109,92,246,.10); --danger: #E23B4D; --danger-soft: rgba(226,59,77,.10);
+    --gold: #E0A400; --shadow: 0 1px 2px rgba(20,21,28,.04), 0 8px 30px rgba(20,21,28,.06);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0C0D14; --surface: #16171F; --surface-2: #1E202A; --border: #2A2C38;
+    --text: #F1F2F8; --muted: #9CA1B4; --brand: #8B7CFF; --brand-strong: #7C6CFF;
+    --brand-soft: rgba(139,124,255,.14); --danger: #FF5A6A; --danger-soft: rgba(255,90,106,.14);
+    --gold: #FFC83D; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 34px rgba(0,0,0,.4);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 32px 20px 72px; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-strong) 100%);
+    border-radius: 22px;
+    padding: 30px 26px;
+    color: #fff;
+    box-shadow: var(--shadow);
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.16);
+    border-radius: 999px; padding: 6px 12px;
+    font-size: 13px; font-weight: 700; letter-spacing: .3px;
+  }
+  .hero h1 {
+    margin: 16px 0 6px; font-size: 30px; line-height: 1.15;
+    font-weight: 800; letter-spacing: -.5px; text-wrap: balance;
+  }
+  .hero p { margin: 0; color: rgba(255,255,255,.92); font-size: 15.5px; max-width: 46ch; }
+  .app-dot {
+    width: 26px; height: 26px; border-radius: 8px;
+    background: #fff; color: var(--brand-strong);
+    display: grid; place-items: center; font-weight: 900; font-size: 15px;
+  }
+
+  section { margin-top: 26px; }
+  h2 {
+    font-size: 13px; font-weight: 800; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--muted); margin: 0 0 12px;
+  }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 18px; padding: 22px; box-shadow: var(--shadow);
+  }
+
+  ol.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; gap: 14px; }
+  ol.steps li { counter-increment: s; display: flex; gap: 14px; align-items: flex-start; }
+  ol.steps li::before {
+    content: counter(s);
+    flex: 0 0 auto; width: 30px; height: 30px; border-radius: 10px;
+    background: var(--brand-soft); color: var(--brand);
+    display: grid; place-items: center; font-weight: 800; font-size: 15px;
+  }
+  ol.steps li b { color: var(--text); }
+  ol.steps li span { padding-top: 3px; color: var(--text); }
+
+  .pathline {
+    display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 8px 12px; margin-top: 4px;
+    font-size: 14px; font-weight: 600;
+  }
+  .pathline .sep { color: var(--muted); }
+  .pathline .del { color: var(--danger); }
+
+  ul.list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  ul.list li { display: flex; gap: 10px; align-items: flex-start; color: var(--text); }
+  ul.list li::before {
+    content: ""; flex: 0 0 auto; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--danger); margin-top: 9px;
+  }
+
+  .mail {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px;
+    margin-top: 14px;
+  }
+  .mail a {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--brand); color: #fff; text-decoration: none;
+    font-weight: 700; font-size: 15px;
+    padding: 12px 18px; border-radius: 12px;
+    transition: transform .12s ease, filter .12s ease;
+  }
+  .mail a:hover { filter: brightness(1.06); transform: translateY(-1px); }
+  .mail a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .mail small { color: var(--muted); }
+
+  .note {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--danger-soft); border: 1px solid color-mix(in srgb, var(--danger) 35%, transparent);
+    border-radius: 14px; padding: 16px 18px; margin-top: 18px;
+  }
+  .note .ico { font-size: 18px; line-height: 1.4; }
+  .note p { margin: 0; font-size: 14.5px; }
+  .note b { color: var(--text); }
+
+  footer {
+    margin-top: 34px; text-align: center; color: var(--muted); font-size: 13px;
+    display: grid; gap: 4px;
+  }
+  a.inline { color: var(--brand); font-weight: 700; text-decoration: none; }
+  a.inline:hover { text-decoration: underline; }
+</style>
+
+<div class="wrap">
+  <div class="hero">
+    <span class="badge"><span class="app-dot">S</span> Sınavla</span>
+    <h1>Hesap ve Veri Silme</h1>
+    <p>Sınavla hesabını ve tüm verilerini kalıcı olarak silebilirsin. Bunu uygulama içinden birkaç saniyede yapabilir ya da bize e-posta ile talep gönderebilirsin.</p>
+  </div>
+
+  <section>
+    <h2>Uygulama içinden silme (önerilen)</h2>
+    <div class="card">
+      <ol class="steps">
+        <li><span><b>Sınavla</b> uygulamasını aç.</span></li>
+        <li><span>Alt menüden <b>Profil</b> sekmesine git.</span></li>
+        <li><span><b>Ayarlar</b> bölümünü aç, en alta in.</span></li>
+        <li><span><b>Hesabı ve verileri sil</b>'e dokun ve onayla.</span></li>
+      </ol>
+      <div class="pathline">
+        Profil <span class="sep">→</span> Ayarlar <span class="sep">→</span> <span class="del">Hesabı ve verileri sil</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Silinen veriler</h2>
+    <div class="card">
+      <ul class="list">
+        <li>Hesabın (e-posta veya Google ile oluşturulan Firebase kimliği)</li>
+        <li>Buluttaki yedeğin</li>
+        <li>Cihazındaki tüm ilerlemen: XP, seri, seviye, istatistikler ve grafikler</li>
+        <li>Favori sorular, yanlışların ve kişisel tekrar listen</li>
+        <li>Kelime kartı ilerlemen ve mağaza (yıldız) bakiyen</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>E-posta ile talep</h2>
+    <div class="card">
+      <p style="margin:0 0 4px; color:var(--muted); font-size:14.5px;">
+        Uygulamaya erişemiyorsan, aşağıdaki adrese <b style="color:var(--text)">“Hesap Silme”</b> konulu bir e-posta gönder. Talebini en geç <b style="color:var(--text)">30 gün</b> içinde işleriz.
+      </p>
+      <div class="mail">
+        <a href="mailto:info@gazla.io?subject=Hesap%20Silme%20Talebi">✉️ info@gazla.io</a>
+        <small>E-postanı, hesabında kayıtlı adresten gönder.</small>
+      </div>
+    </div>
+  </section>
+
+  <div class="note">
+    <span class="ico">⚠️</span>
+    <p><b>Bu işlem geri alınamaz.</b> Hesabın silindiğinde verilerin kalıcı olarak kaldırılır ve geri getirilemez. Yasal bir saklama zorunluluğu bulunmadığı sürece hiçbir veri tutulmaz.</p>
+  </div>
+
+  <footer>
+    <div>Sınavla · Sınav hazırlık uygulaması</div>
+    <div>İletişim: <a class="inline" href="mailto:info@gazla.io">info@gazla.io</a></div>
+  </footer>
+</div>
